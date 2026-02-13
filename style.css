@@ -40,14 +40,37 @@ body {
     bottom: 0;
     left: 10px;
     right: 10px;
-    height: 80%;
+    height: 85%; /* Give it a bit more height */
     background: white;
     z-index: 1;
     transition: all 0.5s;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 15px; /* Balanced padding */
+    border-radius: 10px;
     visibility: hidden;
+    
+    /* THE FIX: Alignment & Spacing */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers text vertically */
+    align-items: center;     /* Centers text horizontally */
+    text-align: center;
+    box-sizing: border-box;  /* Ensures padding doesn't break width */
 }
+
+.letter h1 {
+    font-size: 1.4rem;      /* Scaled for mobile */
+    margin-bottom: 10px;
+    line-height: 1.2;       /* Prevents letters from touching */
+    color: #ff4d6d;
+}
+
+.letter p {
+    font-size: 0.9rem;      /* Smaller text for the message */
+    line-height: 1.5;       /* Gives the words room to breathe */
+    margin: 0;
+    color: #333;
+}
+
 
 /* The "Open" State */
 .envelope-wrapper.open .letter {
