@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Queen</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Queen</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div id="flower-container"></div>
-        <div class="envelope-wrapper" onclick="openLetter()">
-            <div class="envelope">
-            </div>
-            <div class="letter">
-                <h1>Happy Valentine's Day!</h1>
-                <p>I’m really thankful for you and how understanding you always are. You make my life better just by being in it. I love you with all my heart, always.</p>
-                <div class="flowers">💐✨🌷</div>
-            </div>
+
+<div class="container">
+
+    <div id="flower-container"></div>
+
+    <div class="envelope-wrapper" onclick="openLetter()">
+
+        <div class="envelope"></div>
+
+        <div class="letter">
+            <h1>Happy Valentine's Day!</h1>
+
+            <p>
+                I’m really thankful for you and how understanding you always are.
+                You make my life better just by being in it.
+                I love you with all my heart, always.
+            </p>
+
+            <div class="flowers">💐✨🌷</div>
+
         </div>
-        <h2 class="tap-text">Tap to open, shawty...</h2>
     </div>
-    <script src="script.js"></script>
+
+    <h2 class="tap-text">Tap to open, shawty...</h2>
+
+</div>
+
+<script>
+function openLetter() {
+    document.querySelector(".envelope-wrapper").classList.toggle("open");
+}
+</script>
+
 </body>
 </html>
