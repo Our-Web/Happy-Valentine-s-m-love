@@ -3,38 +3,141 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100svh; /* FIXES iPhone Safari viewport bug */
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
 .container {
     text-align: center;
+    width: 100%;
 }
 
-/* Envelope */
+/* Envelope scales with screen */
 .envelope-wrapper {
     position: relative;
-    width: 300px;
-    height: 200px;
+    width: 80vw;          /* Responsive width */
+    max-width: 320px;     /* Prevents huge scaling */
+    height: 55vw;
+    max-height: 220px;
+
     background-color: #ff85a1;
     margin: 0 auto;
     cursor: pointer;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
 }
 
+/* Envelope flap */
 .envelope::before {
     content: "";
     position: absolute;
     top: 0;
     z-index: 2;
-    border-left: 150px solid transparent;
-    border-right: 150px solid transparent;
-    border-top: 100px solid #ff4d6d;
+
+    border-left: 50% solid transparent;
+    border-right: 50% solid transparent;
+    border-top: 50% solid #ff4d6d;
+
+    width: 0;
+    height: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
     transition: 0.5s;
 }
 
+/* Letter */
+.letter {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    right: 5%;
+
+    background: white;
+    border-radius: 16px;
+
+    padding: 20px 15px 80px 15px;
+
+    visibility: hidden;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.5s;
+}
+
+/* Title scales */
+.letter h1 {
+    font-size: clamp(18px, 4vw, 22px);
+    margin-bottom: 10px;
+    color: #ff4d6d;
+}
+
+/* Paragraph scales */
+.letter p {
+    font-size: clamp(13px, 3.5vw, 16px);
+    line-height: 1.6;
+    max-width: 95%;
+}
+
+/* Flower emojis FIXED */
+.flowers {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(28px, 8vw, 40px);
+    animation: bounce 1.3s infinite;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* Opening animation adjusted for tall phones */
+.envelope-wrapper.open .letter {
+    transform: translateY(-40%);
+    visibility: visible;
+    z-index: 3;
+}
+
+.envelope-wrapper.open .envelope::before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.tap-text {
+    color: #ff4d6d;
+    margin-top: 25px;
+    font-size: clamp(14px, 4vw, 20px);
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%,100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.15); }
+}
+
+/* Falling petals */
+.petal {
+    position: fixed;
+    top: -10%;
+    font-size: 24px;
+    animation: fall linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
 /* Letter */
 .letter {
     position: absolute;
