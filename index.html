@@ -36,6 +36,32 @@
 </div>
 
 <script>
+const container = document.getElementById("flower-container");
+
+setInterval(() => {
+    const petal = document.createElement("div");
+    petal.innerHTML = "🌸";
+    petal.classList.add("petal");
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+    document.body.appendChild(petal);
+
+    setTimeout(() => petal.remove(), 6000);
+
+}, 500);
+</script>
+
+<script>
+function openLetter() {
+    document.querySelector(".envelope-wrapper").classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
+<script>
 function openLetter() {
     document.querySelector(".envelope-wrapper").classList.toggle("open");
 }
